@@ -25,6 +25,7 @@ public class TicTacToeGame extends MyJFrame {
         menuBar = new JMenuBar(); // create the menu bar
         menu = new JMenu("Game Options"); // create the menu
         resetGameItem = new JMenuItem("Reset Game"); // create the menu item 
+        resetGameItem.addActionListener(e -> ResetGame()); // this registers a listener that will listen for clicks on this button
 
         menu.add(resetGameItem); // add the menu item to the menu
         menuBar.add(menu); // add the menu to the menu bar
@@ -71,7 +72,7 @@ public class TicTacToeGame extends MyJFrame {
 
         JButton btnClicked = ((JButton) event.getSource());
         btnClicked.setText(currentPlayer);
-        //btnClicked.setEnabled(false);
+        btnClicked.setEnabled(false);
 
         if (currentPlayer == "x") {
             btnClicked.setBackground(Color.RED);
