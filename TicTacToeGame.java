@@ -32,7 +32,7 @@ public class TicTacToeGame extends MyJFrame {
         font = new Font(Font.SERIF, Font.BOLD, 100);
 
         for (int i = 0; i < ROWS * COLUMNS; i++) {
-            JButton btn = new JButton("" + i);
+            JButton btn = new JButton();
             btn.addActionListener(event -> ButtonClicked(event));
             // SET THE FONT on the BUTTON
             btn.setFont(font);
@@ -50,6 +50,12 @@ public class TicTacToeGame extends MyJFrame {
         btnClicked.setText(currentPlayer);
         //btnClicked.setEnabled(false);
 
+        if (currentPlayer == "x") {
+            btnClicked.setBackground(Color.RED);
+        } else {
+            btnClicked.setBackground(Color.GREEN);
+        }
+
         boolean winnerFound = CheckWinner();
 
         if (winnerFound) {
@@ -62,14 +68,15 @@ public class TicTacToeGame extends MyJFrame {
 
         //System.out.println(winnerFound);
 
+        SwitchPlayer();
+    }
+
+    public void SwitchPlayer() {
         if (currentPlayer == "x") {
-            btnClicked.setBackground(Color.RED);
             currentPlayer = "o";
         } else {
-            btnClicked.setBackground(Color.GREEN);
             currentPlayer = "x";
         }
-
     }
     
     public boolean CheckWinner() {
