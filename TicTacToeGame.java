@@ -53,6 +53,20 @@ public class TicTacToeGame extends MyJFrame {
         setVisible(true);
     }
 
+    /**
+     * Will reset the game. This involves resetting who the current player is
+     * and resetting the text, color, and enabled status of each button
+     */
+    public void ResetGame() {
+        currentPlayer = "x";
+        for (int i = 0; i < buttons.size(); i++) {
+            JButton btn = buttons.get(i);
+            btn.setText("");
+            btn.setBackground(null);
+            btn.setEnabled(true);
+        }
+    }
+
     public void ButtonClicked(ActionEvent event) {
 
         JButton btnClicked = ((JButton) event.getSource());
