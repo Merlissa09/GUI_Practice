@@ -1,6 +1,4 @@
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -15,11 +13,22 @@ public class TicTacToeGame extends MyJFrame {
     int ROWS = 3, COLUMNS = 3;
     String currentPlayer = "x";
     Font font;
+    JMenuBar menuBar;
+    JMenu menu;
+    JMenuItem resetGameItem;
 
     // constructor which has no parameters
     public TicTacToeGame() {
         // call the parent classes constructor and pass in a title
         super("Tic Tac Toe Game");
+
+        menuBar = new JMenuBar(); // create the menu bar
+        menu = new JMenu("Game Options"); // create the menu
+        resetGameItem = new JMenuItem("Reset Game"); // create the menu item 
+
+        menu.add(resetGameItem); // add the menu item to the menu
+        menuBar.add(menu); // add the menu to the menu bar
+        setJMenuBar(menuBar); // add the menu bar to the JFrame
 
         jPanel = new JPanel(); // needs to be instantiated
         // // jPanel.setLayout(new BorderLayout());
@@ -65,8 +74,6 @@ public class TicTacToeGame extends MyJFrame {
                 buttons.get(i).setEnabled(false);
             }
         }
-
-        //System.out.println(winnerFound);
 
         SwitchPlayer();
     }
