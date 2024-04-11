@@ -1,4 +1,5 @@
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -48,6 +49,18 @@ public class TicTacToeGame extends MyJFrame {
         JButton btnClicked = ((JButton) event.getSource());
         btnClicked.setText(currentPlayer);
         //btnClicked.setEnabled(false);
+
+        boolean winnerFound = CheckWinner();
+
+        if (winnerFound) {
+            JOptionPane.showMessageDialog(null, currentPlayer + " has won the game!");
+
+            for (int i = 0; i < buttons.size(); i++) {
+                buttons.get(i).setEnabled(false);
+            }
+        }
+
+        //System.out.println(winnerFound);
 
         if (currentPlayer == "x") {
             btnClicked.setBackground(Color.RED);
